@@ -50,7 +50,7 @@
 
       show(movieID) {
         this.visible = true;
-        axios({ method: "GET", "url": "http://www.omdbapi.com/?apikey=4a6cd2f&i=" + movieID }).then(result => {
+        axios({ method: "GET", "url": "https://www.omdbapi.com/?apikey=4a6cd2f&i=" + movieID }).then(result => {
           this.selectedMovie = result.data;
         }, error => {
           console.error(error);
