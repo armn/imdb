@@ -36,7 +36,7 @@
     methods: {
       searchFilm(value) {
         console.log('meklēju ' + value);
-        axios({ method: "GET", "url": "http://www.omdbapi.com/?apikey=4a6cd2f&s=" + value}).then(result => {
+        axios({ method: "GET", "url": "https://www.omdbapi.com/?apikey=4a6cd2f&s=" + value}).then(result => {
           console.log(result.data);
           serverBus.$emit('searching', result.data);
         }, error => {
