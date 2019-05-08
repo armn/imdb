@@ -29,7 +29,6 @@
       return {
       movies: [],
       searchTerm: '',
-      favoriteMovies: [],
       totalResults: []
       }
     },
@@ -228,20 +227,4 @@
     max-width: 70%;
   }
 
-  .favorite {
-    position: absolute;
-    right: 5px;
-    top: -10px;
-    font-size: 40px;
-    &::after {
-      content: '☆';
-    }
-
-    &:hover, &.favorited {
-      &::after {
-        content: '★';
-        color: #ffcf18;
-      }
-    }
-  }
 </style>
