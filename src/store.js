@@ -6,6 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    queryURL: String,
+    pageNum: Number
   },
   mutations: {
   },

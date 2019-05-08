@@ -22,13 +22,15 @@
 <script>
   import axios from "axios";
   import { serverBus } from './main';
+  import  store  from "./store.js";
 
   export default {
     data: function() {
       return {
       movies: [],
       searchTerm: '',
-      favoriteMovies: []
+      favoriteMovies: [],
+      totalResults: []
       }
     },
 
@@ -36,8 +38,10 @@
     methods: {
       searchFilm(value) {
         console.log('meklēju ' + value);
-        axios({ method: "GET", "url": "https://www.omdbapi.com/?apikey=4a6cd2f&s=" + value}).then(result => {
-          console.log(result.data);
+        store.state.queryURL = '';
+        store.state.pageNum = 2;
+        store.state.queryURL = 'https://www.omdbapi.com/?apikey=4a6cd2f&s=' + value;
+        axios({ method: "GET", "url": store.state.queryURL}).then(result => {
           serverBus.$emit('searching', result.data);
         }, error => {
           console.error(error);
@@ -103,12 +107,14 @@
       }
     }
 
+
+  }
+
     button {
       background: #F5C518;
       border: 2px solid black;
       padding: 15px 25px;
       font-size: 18px;
-      //margin: 0 0 0 10px;
       cursor: pointer;
       font-weight: bold;
       transition: all 0.2s ease-in-out;
@@ -123,6 +129,15 @@
         background: #ffcf18;
       }
     }
+
+  .actions {
+    flex-basis: 100%;
+    padding: 15px 0;
+
+    .results {
+      margin-bottom: 15px;
+    }
+
   }
 
 #app {

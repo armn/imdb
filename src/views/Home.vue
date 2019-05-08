@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MoviesList />
+    <MoviesList queryURL="queryURL" />
   </div>
 </template>
 
